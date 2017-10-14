@@ -35,6 +35,10 @@ class Enumerable(object):
         受け取った関数を適用してフィルタリングした結果を返す
         """
         if predicate is None:
-            predicate = lambda _: True
+            predicate = __pass_all__
 
         return self.__class__((x for x in self.values if predicate(x)))
+
+
+def __pass_all__():
+    return True
