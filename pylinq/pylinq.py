@@ -44,3 +44,18 @@ class Enumerable(object):
         """
 
         return self.from_(map(selector, self.values))
+
+    def all(self, predicate: Callable = None) -> bool:
+        """
+        受け取った関数を適用した結果がすべて True と判定されるものなら True を返す
+        """
+
+        return all(map(predicate or __through__, self.values))
+
+
+def __through__(value):
+    """
+    受け取った値をそのまま返す
+    """
+
+    return value

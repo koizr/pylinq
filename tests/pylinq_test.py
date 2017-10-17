@@ -28,6 +28,19 @@ class TestEnumerable(unittest.TestCase):
         expected = [5, 10, 15]
         self.assertListEqual(actual, expected)
 
+    def test_all(self):
+        all_true = Enumerable.from_([True, 1, [''], 'x']).all()
+        self.assertTrue(all_true)
+
+        has_false = Enumerable.from_([False, 1, [''], 'x']).all()
+        self.assertFalse(has_false)
+
+        all_true = Enumerable.from_([1, 2, 3, 4]).all(lambda x: x < 5)
+        self.assertTrue(all_true)
+
+        has_false = Enumerable.from_([1, 2, 3, 4, 5]).all(lambda x: x < 5)
+        self.assertFalse(has_false)
+
 
 if __name__ == '__main__':
     unittest.main()
