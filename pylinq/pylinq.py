@@ -38,6 +38,13 @@ class Enumerable(object):
         filtered = filter(predicate or __pass_all__, self.values)
         return self.__class__(filtered)
 
+    def select(self, predicate: Callable) -> 'Enumerable':
+        """
+        受け取った関数適用して変換した結果を返す
+        """
+
+        return self.from_(map(predicate, self.values))
+
 
 def __pass_all__():
     return True

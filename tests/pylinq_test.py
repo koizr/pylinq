@@ -23,6 +23,11 @@ class TestEnumerable(unittest.TestCase):
         expected = [2, 4]
         self.assertListEqual(actual, expected)
 
+    def test_select(self):
+        actual = list(Enumerable.from_([1, 2, 3]).select(lambda x: x * 5))
+        expected = [5, 10, 15]
+        self.assertListEqual(actual, expected)
+
 
 if __name__ == '__main__':
     unittest.main()
