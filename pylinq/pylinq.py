@@ -36,7 +36,7 @@ class Enumerable(object):
         """
 
         filtered = filter(predicate, self.values)
-        return self.__class__(filtered)
+        return self.from_(filtered)
 
     def select(self, predicate: Callable) -> 'Enumerable':
         """
