@@ -34,10 +34,9 @@ class Enumerable(object):
         """
         受け取った関数を適用してフィルタリングした結果を返す
         """
-        if predicate is None:
-            predicate = __pass_all__
 
-        return self.__class__((x for x in self.values if predicate(x)))
+        filtered = filter(predicate or __pass_all__, self.values)
+        return self.__class__(filtered)
 
 
 def __pass_all__():
