@@ -35,7 +35,7 @@ class Enumerable(object):
         受け取った関数を適用してフィルタリングした結果を返す
         """
 
-        filtered = filter(predicate or __pass_all__, self.values)
+        filtered = filter(predicate, self.values)
         return self.__class__(filtered)
 
     def select(self, predicate: Callable) -> 'Enumerable':
@@ -44,7 +44,3 @@ class Enumerable(object):
         """
 
         return self.from_(map(predicate, self.values))
-
-
-def __pass_all__():
-    return True
