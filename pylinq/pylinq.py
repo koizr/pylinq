@@ -38,9 +38,9 @@ class Enumerable(object):
         filtered = filter(predicate, self.values)
         return self.from_(filtered)
 
-    def select(self, predicate: Callable) -> 'Enumerable':
+    def select(self, selector: Callable) -> 'Enumerable':
         """
         受け取った関数適用して変換した結果を返す
         """
 
-        return self.from_(map(predicate, self.values))
+        return self.from_(map(selector, self.values))
